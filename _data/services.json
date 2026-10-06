@@ -1,0 +1,55 @@
+[
+  {
+    "id": "chytry-dum",
+    "title": "Chytrý dům",
+    "text": "Inteligentní instalace Loxone, Fibaro a Control4. Úspora, komfort a ovládání odkudkoli.",
+    "tags": [
+      "Loxone Gold Partner",
+      "Fibaro",
+      "Control4"
+    ],
+    "image": "svetla.jpg"
+  },
+  {
+    "id": "kamery",
+    "title": "Kamerové systémy",
+    "text": "CCTV pro domy, firmy i průmyslové objekty. Videoanalýza, čtení SPZ, termokamery.",
+    "tags": [
+      "CCTV",
+      "Videoanalýza",
+      "SPZ"
+    ],
+    "image": "kamera.jpg"
+  },
+  {
+    "id": "alarmy",
+    "title": "Zabezpečovací systémy",
+    "text": "Alarm (PZTS) chrání majetek a včas Vás informuje o případném problému – přímo do telefonu.",
+    "tags": [
+      "PZTS",
+      "Alarmy"
+    ],
+    "image": "alarm.jpg"
+  },
+  {
+    "id": "pristup",
+    "title": "Přístupové a docházkové systémy",
+    "text": "Od jedné čtečky u brány nebo garáže po firemní systém s více pobočkami a vzdálenou správou.",
+    "tags": [
+      "ACS",
+      "Docházka"
+    ],
+    "image": "pristup.jpg"
+  },
+  {
+    "id": "fve",
+    "title": "Fotovoltaické elektrárny",
+    "text": "FVE různého výkonu na míru, včetně vyřízení dotací a administrativy. Vždy s možností rozšíření a se vzdáleným dohledem.",
+    "tags": [
+      "FVE",
+      "Dotace",
+      "Vzdálený dohled"
+    ],
+    "image": "fve.jpg"
+  }
+]

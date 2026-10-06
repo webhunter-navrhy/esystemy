@@ -1,0 +1,118 @@
+{
+  "name": "E-systémy",
+  "claim": "smart & security systems",
+  "owner": "Filip Sklenář",
+  "ico": "72161353",
+  "phone": "+420 777 309 440",
+  "email": "info@esystemy.cz",
+  "address": "L. Kuby 1832/46, 370 07 České Budějovice",
+  "map": "https://mapy.com/cs/zakladni?q=L.%20Kuby%201832%2F46%2C%20%C4%8Cesk%C3%A9%20Bud%C4%9Bjovice",
+  "hero": {
+    "eyebrow": "Smart & security systems · České Budějovice",
+    "title_1": "Vše pod",
+    "title_accent": "kontrolou.",
+    "lead": "Chytrý dům, kamery, alarmy, přístupové systémy i fotovoltaika. Navrhneme, nainstalujeme a postaráme se o servis – ať jde o rodinný dům, chatu nebo firmu.",
+    "cta": "Nezávazná poptávka",
+    "cta_2": "Co umíme",
+    "image": "dum-brana.jpg"
+  },
+  "marquee": [
+    "Chytrý dům",
+    "Kamerové systémy",
+    "Zabezpečovací systémy PZTS",
+    "Přístupové systémy",
+    "Docházka",
+    "Fotovoltaika",
+    "Loxone",
+    "Fibaro",
+    "Control4",
+    "Projekt · realizace · servis"
+  ],
+  "intro": {
+    "label": "Kdo jsme",
+    "title_thin": "Bezpečnost a komfort",
+    "title_bold": "z jedné ruky.",
+    "text": "Nabízíme komplexní služby v oblasti bezpečnostních a smart technologií. Od projektu a poradenství přes realizaci až po servisní činnost. Mějte svůj dům, chatu či firmu pod kontrolou – ovládejte vše vzdáleně a bezpečně a běžné úkony nechte na chytrém domě.",
+    "places": [
+      "Rodinný dům",
+      "Chata",
+      "Firma"
+    ],
+    "image": "dum-rez.jpg"
+  },
+  "smart": {
+    "label": "Chytrý dům",
+    "title_thin": "Inteligentní ovládání,",
+    "title_bold": "úspora, komfort.",
+    "text": "Světla, žaluzie, topení, zabezpečení i multimédia v jedné aplikaci. Ovládejte kdykoli a odkudkoli – podle toho, jaký systém Vám sedne nejlépe.",
+    "systems": [
+      {
+        "name": "Loxone",
+        "badge": true,
+        "text": "Řešení pro veškeré funkce chytrého domu. Možnost bezdrátového i drátového systému."
+      },
+      {
+        "name": "Fibaro",
+        "text": "Bezdrátový systém, který díky technologii Z-Wave může mít kdokoli, protože nevyžaduje žádné stavební úpravy."
+      },
+      {
+        "name": "Control4",
+        "text": "Chytrý dům včetně multimediálních funkcí, jako je domácí kino nebo propracované audio a video."
+      }
+    ],
+    "image": "svetla.jpg"
+  },
+  "cameras": {
+    "label": "CCTV · Kamerové systémy",
+    "title_thin": "Je jen na Vás,",
+    "title_bold": "jaký systém zvolíte.",
+    "text": "Instalujeme kamerové systémy pro všechny druhy objektů a pro různé účely. Od malých až po rozsáhlé systémy.",
+    "tiers": [
+      {
+        "title": "Rodinné domy",
+        "text": "Kamerové systémy menšího rozsahu pro rodinné domy, stavby, chalupy a zahrádky. Navrhneme Vám řešení přímo na míru.",
+        "image": "kamera.jpg"
+      },
+      {
+        "title": "Firmy a průmyslové objekty",
+        "text": "Systémy s pokročilou inteligentní videoanalýzou pro efektivnější vyhledávání záznamu a lepší využití celého systému.",
+        "image": "kamera-obchod.jpg"
+      },
+      {
+        "title": "Automatizace a střežení",
+        "text": "Kamery, které ovládají další technologie: automatické závory a brány se čtením SPZ nebo perimetrická ochrana plotu pomocí termokamer.",
+        "image": "dum-brana.jpg"
+      }
+    ]
+  },
+  "process": {
+    "label": "Jak pracujeme",
+    "title_thin": "Od prvního nápadu",
+    "title_bold": "po servis.",
+    "steps": [
+      {
+        "title": "Projekt",
+        "text": "Projdeme objekt, Vaše představy i rozpočet a navrhneme systém na míru."
+      },
+      {
+        "title": "Poradenství",
+        "text": "Vysvětlíme rozdíly mezi systémy a doporučíme to, co dává smysl právě u Vás."
+      },
+      {
+        "title": "Realizace",
+        "text": "Instalaci provedeme kompletně – od kabeláže po nastavení aplikace ve Vašem telefonu."
+      },
+      {
+        "title": "Servis",
+        "text": "O systém se postaráme i po předání – servis, úpravy i rozšíření, když přijdou nové nápady."
+      }
+    ]
+  },
+  "contact": {
+    "label": "Kontakt",
+    "title_thin": "Pojďme to dát",
+    "title_bold": "pod kontrolu.",
+    "text": "Napište nám, co potřebujete zabezpečit nebo zautomatizovat. Ozveme se a navrhneme řešení přímo pro Váš objekt."
+  },
+  "eu_note": "Naše firma využila možnosti dotace na nákup nového elektromobilu. Projekt je spolufinancován z fondů EU."
+}

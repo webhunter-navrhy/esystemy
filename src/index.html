@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="cs" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chytrý dům, kamery a zabezpečení České Budějovice — {{ site.name }}</title>
+<meta name="description" content="Chytrý dům Loxone, Fibaro a Control4, kamerové systémy, alarmy PZTS, přístupové a docházkové systémy a fotovoltaika. Projekt, realizace i servis. České Budějovice.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#12100E">
+<meta property="og:title" content="{{ site.name }} — vše pod kontrolou">
+<meta property="og:description" content="Smart & security systems: chytrý dům, kamery, alarmy, přístupové systémy a FVE.">
+<meta property="og:image" content="assets/img/og.jpg">
+<link rel="icon" href="assets/favicon.png?v={{ v.fav }}" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v={{ v.fav }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="{{ site.hero.image | img(900) }}">
+<link rel="stylesheet" href="assets/style.css?v={{ v.css }}">
+<script>document.documentElement.classList.replace('no-js','js')</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="assets/main.js?v={{ v.js }}" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#kdo-jsme">Přeskočit na obsah</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner wrap">
+    <a href="#top" class="brand" aria-label="{{ site.name }} — úvod">
+      <img src="assets/mark-light.svg?v={{ v.logo }}" alt="" width="40" height="40">
+      <span class="brand-text"><strong>{{ site.name }}</strong><small>{{ site.claim }}</small></span>
+    </a>
+    <nav class="menu" id="menu" aria-label="Hlavní navigace">
+      <a href="#sluzby">Služby</a>
+      <a href="#chytry-dum">Chytrý dům</a>
+      <a href="#kamery">Kamery</a>
+      <a href="#postup">Jak pracujeme</a>
+      <a href="#kontakt" class="menu-cta">Poptávka</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Úvod">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="{{ site.hero.image | img }}" srcset="{{ site.hero.image | srcset }}" sizes="100vw" alt="" class="hero-img">
+    <div class="hero-shade"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="pulse"></span>{{ site.hero.eyebrow }}</p>
+      <h1 class="hero-title" aria-label="{{ site.hero.title_1 }} {{ site.hero.title_accent }}">
+        <span class="line" aria-hidden="true">{% for w in site.hero.title_1.split() %}<span class="w"><span>{{ w }}</span></span> {% endfor %}</span>
+        <span class="line" aria-hidden="true"><span class="w"><span><em>{{ site.hero.title_accent }}</em></span></span></span>
+      </h1>
+      <p class="hero-lead">{{ site.hero.lead }}</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary magnetic"><span>{{ site.hero.cta }}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#sluzby" class="btn btn-ghost">{{ site.hero.cta_2 }}</a>
+      </div>
+    </div>
+
+    <!-- signature: ovládací panel -->
+    <div class="panel" id="panel" aria-label="Ukázka ovládací aplikace chytrého domu">
+      <div class="panel-head">
+        <span class="panel-dot"></span>
+        <span>Můj dům</span>
+        <span class="panel-time mono" id="clock">--:--</span>
+      </div>
+      <button class="tile tile-alarm is-on" id="alarmTile" type="button" aria-pressed="true">
+        <span class="tile-ico"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4" class="tick"/></svg></span>
+        <span class="tile-txt"><small>Zabezpečení</small><strong id="alarmState">Zastřeženo</strong></span>
+        <span class="switch" aria-hidden="true"><span></span></span>
+      </button>
+      <div class="tile tile-cam">
+        <div class="cam-feed">
+          <img src="{{ 'kamera.jpg' | img(900) }}" alt="">
+          <span class="rec mono"><i></i>LIVE · Vjezd</span>
+          <span class="scan" aria-hidden="true"></span>
+        </div>
+        <div class="tile-row"><small>Kamery</small><strong>4 / 4 online</strong></div>
+      </div>
+      <div class="tile-pair">
+        <button class="tile tile-mini" type="button" data-toggle aria-pressed="true">
+          <small>Světla · obývák</small><strong class="mini-state">Zapnuto</strong>
+          <span class="bulb" aria-hidden="true"></span>
+        </button>
+        <button class="tile tile-mini" type="button" data-toggle aria-pressed="false">
+          <small>Brána</small><strong class="mini-state" data-on="Otevřeno" data-off="Zavřeno">Zavřeno</strong>
+          <span class="bulb" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="tile tile-fve">
+        <div class="tile-row"><small>Fotovoltaika · dnes</small><strong class="mono nocase" id="fveVal">—</strong></div>
+        <svg class="spark" viewBox="0 0 200 48" preserveAspectRatio="none" aria-hidden="true"><path id="sparkPath" d=""/></svg>
+      </div>
+      <p class="panel-note">Ilustrace · takhle může vypadat ovládání Vašeho domu</p>
+    </div>
+  </div>
+  <a href="#kdo-jsme" class="scroll-ind" aria-label="Posunout dolů"><span></span></a>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    {% for _ in range(2) %}<div class="marquee-group">{% for m in site.marquee %}<span>{{ m }}</span><i>✦</i>{% endfor %}</div>{% endfor %}
+  </div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<section class="intro" id="kdo-jsme">
+  <div class="wrap intro-grid">
+    <figure class="intro-img clip">
+      <img src="{{ site.intro.image | img }}" srcset="{{ site.intro.image | srcset }}" sizes="(max-width: 900px) 100vw, 45vw" alt="Řez chytrým rodinným domem s technologiemi a fotovoltaikou" loading="lazy">
+    </figure>
+    <div class="intro-copy">
+      <p class="label">{{ site.intro.label }}</p>
+      <h2 class="h2"><span class="h-thin">{{ site.intro.title_thin }}</span> <span class="h-bold">{{ site.intro.title_bold }}</span></h2>
+      <p class="body-lg">{{ site.intro.text }}</p>
+      <ul class="places">{% for p in site.intro.places %}<li><span class="mono">0{{ loop.index }}</span>{{ p }}</li>{% endfor %}</ul>
+      <img class="gold" src="assets/img/loxone-gold.png" alt="Loxone Smart Home Gold Partner" width="265" height="48" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLUŽBY ============ -->
+<section class="services" id="sluzby">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Služby</p>
+      <h2 class="h2"><span class="h-thin">Pět oblastí,</span> <span class="h-bold">jeden partner.</span></h2>
+    </div>
+    <ol class="svc-list">
+      {% for s in services %}
+      <li class="svc" id="{{ s.id }}-sluzba" data-img="{{ s.image | img(900) }}">
+        <span class="svc-num">0{{ loop.index }}</span>
+        <div class="svc-main">
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.text }}</p>
+        </div>
+        <ul class="svc-tags">{% for t in s.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+        <img class="svc-thumb" src="{{ s.image | img(900) }}" alt="" loading="lazy">
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+  <div class="svc-preview" id="svcPreview" aria-hidden="true"><img alt=""></div>
+</section>
+
+<!-- ============ CHYTRÝ DŮM ============ -->
+<section class="smart dark" id="chytry-dum">
+  <div class="smart-bgword" aria-hidden="true">SMART HOME</div>
+  <div class="wrap smart-grid">
+    <div class="smart-copy">
+      <p class="label">{{ site.smart.label }}</p>
+      <h2 class="h2"><span class="h-thin">{{ site.smart.title_thin }}</span><br><span class="h-bold">{{ site.smart.title_bold }}</span></h2>
+      <p class="body-lg">{{ site.smart.text }}</p>
+    </div>
+    <figure class="smart-img clip">
+      <img src="{{ site.smart.image | img }}" srcset="{{ site.smart.image | srcset }}" sizes="(max-width: 900px) 100vw, 50vw" alt="Chytré osvětlení v obývacím pokoji" loading="lazy">
+    </figure>
+  </div>
+  <div class="wrap systems">
+    {% for s in site.smart.systems %}
+    <article class="system{% if s.badge %} system-gold{% endif %}">
+      <header><h3>{{ s.name }}</h3>{% if s.badge %}<span class="chip">Gold Partner</span>{% endif %}</header>
+      <p>{{ s.text }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ============ KAMERY (sticky) ============ -->
+<section class="cams" id="kamery">
+  <div class="wrap cams-grid">
+    <div class="cams-sticky">
+      <div class="cams-frame">
+        {% for t in site.cameras.tiers %}<img src="{{ t.image | img }}" srcset="{{ t.image | srcset }}" sizes="(max-width: 900px) 100vw, 50vw" alt="" class="cams-img{% if loop.first %} is-active{% endif %}" data-i="{{ loop.index0 }}" loading="lazy">{% endfor %}
+        <span class="rec mono"><i></i>REC · CAM 0<b id="camNo">1</b></span>
+        <span class="corners" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="cams-copy">
+      <p class="label">{{ site.cameras.label }}</p>
+      <h2 class="h2"><span class="h-thin">{{ site.cameras.title_thin }}</span><br><span class="h-bold">{{ site.cameras.title_bold }}</span></h2>
+      <p class="body-lg">{{ site.cameras.text }}</p>
+      {% for t in site.cameras.tiers %}
+      <article class="tier" data-i="{{ loop.index0 }}">
+        <span class="mono tier-n">0{{ loop.index }} / 0{{ site.cameras.tiers|length }}</span>
+        <h3>{{ t.title }}</h3>
+        <p>{{ t.text }}</p>
+        <img class="tier-img" src="{{ t.image | img(900) }}" alt="" loading="lazy">
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENTO ============ -->
+<section class="bento-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">Zabezpečení · přístup · energie</p>
+      <h2 class="h2"><span class="h-thin">Chráníme majetek.</span> <span class="h-bold">Šetříme energii.</span></h2>
+    </div>
+    <div class="bento">
+      <article class="b-card b-big">
+        <img src="{{ 'alarm.jpg' | img }}" srcset="{{ 'alarm.jpg' | srcset }}" sizes="(max-width: 900px) 100vw, 50vw" alt="Ovládací panel alarmu" loading="lazy">
+        <div class="b-txt"><span class="mono">PZTS</span><h3>Zabezpečovací systémy</h3><p>Důležitý doplněk, který chrání nejen majetek, ale i včas informuje o případném problému.</p></div>
+      </article>
+      <article class="b-card">
+        <img src="{{ 'pristup.jpg' | img(900) }}" alt="Čtečka otisků prstů u vstupu" loading="lazy">
+        <div class="b-txt"><span class="mono">ACS</span><h3>Přístup a docházka</h3><p>Jedna čtečka u garáže i firemní systém s několika pobočkami pod jednou správou.</p></div>
+      </article>
+      <article class="b-card">
+        <img src="{{ 'fve.jpg' | img }}" alt="Fotovoltaické panely na střeše" loading="lazy">
+        <div class="b-txt"><span class="mono">FVE</span><h3>Fotovoltaika</h3><p>Na míru, včetně dotací. Ohřev vody s plynulou regulací a spouštění spotřebičů při dostatku energie.</p></div>
+      </article>
+      <article class="b-card b-wide">
+        <img src="{{ 'dum-dlan.jpg' | img(900) }}" alt="Model domu na dlani" loading="lazy">
+        <div class="b-txt"><span class="mono">REMOTE</span><h3>Ovládání odkudkoli</h3><p>Kontrola vzdáleně – kdykoli a kdekoli. Ovládejte vše na dálku a bezpečně.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POSTUP ============ -->
+<section class="process dark" id="postup">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="label">{{ site.process.label }}</p>
+      <h2 class="h2"><span class="h-thin">{{ site.process.title_thin }}</span> <span class="h-bold">{{ site.process.title_bold }}</span></h2>
+    </div>
+    <div class="steps-box">
+    <div class="steps-line" aria-hidden="true"><span id="stepsLine"></span></div>
+    <ol class="steps">
+      {% for s in site.process.steps %}
+      <li class="step">
+        <span class="step-n">0{{ loop.index }}</span>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT ============ -->
+<section class="contact" id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <p class="label">{{ site.contact.label }}</p>
+      <h2 class="h2 h2-xl"><span class="h-thin">{{ site.contact.title_thin }}</span><br><span class="h-bold">{{ site.contact.title_bold }}</span></h2>
+      <p class="body-lg">{{ site.contact.text }}</p>
+      <ul class="c-list">
+        <li><small>Telefon</small><a href="tel:{{ site.phone | tel }}" class="u-link">{{ site.phone }}</a></li>
+        <li><small>E-mail</small><a href="mailto:{{ site.email }}" class="u-link">{{ site.email }}</a></li>
+        <li><small>Adresa</small><a href="{{ site.map }}" class="u-link" target="_blank" rel="noopener">{{ site.address }}</a></li>
+      </ul>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();this.classList.add('sent')">
+      <p class="form-note mono">Ukázka formuláře · napojí se při spuštění webu</p>
+      <label><span>Jméno *</span><input type="text" name="jmeno" required autocomplete="name"></label>
+      <div class="form-row">
+        <label><span>E-mail *</span><input type="email" name="email" required autocomplete="email"></label>
+        <label><span>Telefon</span><input type="tel" name="telefon" autocomplete="tel"></label>
+      </div>
+      <fieldset class="chips">
+        <legend>Co Vás zajímá</legend>
+        {% for s in services %}<label><input type="checkbox" name="zajem" value="{{ s.title }}"><span>{{ s.title }}</span></label>{% endfor %}
+      </fieldset>
+      <label><span>Zpráva *</span><textarea name="zprava" rows="4" required></textarea></label>
+      <button class="btn btn-primary magnetic" type="submit"><span>Odeslat poptávku</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <p class="form-ok">Děkujeme, ozveme se. (Ukázka – nic se neodeslalo.)</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer dark">
+  <div class="wrap footer-grid">
+    <a href="#top" class="brand brand-lg"><img src="assets/mark-light.svg?v={{ v.logo }}" alt="" width="56" height="56"><span class="brand-text"><strong>{{ site.name }}</strong><small>{{ site.claim }}</small></span></a>
+    <div class="f-col"><small>Provozovatel</small><p>{{ site.owner }}<br>IČO {{ site.ico }}<br>{{ site.address }}</p></div>
+    <div class="f-col"><small>Kontakt</small><p><a href="tel:{{ site.phone | tel }}">{{ site.phone }}</a><br><a href="mailto:{{ site.email }}">{{ site.email }}</a></p></div>
+    <p class="f-eu">{{ site.eu_note }}</p>
+  </div>
+  <div class="wrap footer-bottom"><span>© {{ year }} {{ site.name }}</span><span>Návrh webu: Studentské Weby</span></div>
+  <div class="footer-word" aria-hidden="true">E-SYSTÉMY</div>
+</footer>
+
+</body>
+</html>
