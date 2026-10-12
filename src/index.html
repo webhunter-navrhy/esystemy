@@ -17,6 +17,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="{{ site.hero.image | img(900) }}">
 <link rel="stylesheet" href="assets/style.css?v={{ v.css }}">
+<script type="application/ld+json">
+{{ jsonld }}
+</script>
 <script>document.documentElement.classList.replace('no-js','js')</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
@@ -84,7 +87,7 @@
       </button>
       <div class="tile tile-cam">
         <div class="cam-feed">
-          <img src="{{ 'kamera.jpg' | img(900) }}" alt="">
+          <img src="{{ 'kamera.jpg' | img(900) }}" alt="Ukázka živého obrazu z kamery u vjezdu">
           <span class="rec mono"><i></i>LIVE · Vjezd</span>
           <span class="scan" aria-hidden="true"></span>
         </div>
@@ -149,7 +152,7 @@
           <p>{{ s.text }}</p>
         </div>
         <ul class="svc-tags">{% for t in s.tags %}<li>{{ t }}</li>{% endfor %}</ul>
-        <img class="svc-thumb" src="{{ s.image | img(900) }}" alt="" loading="lazy">
+        <img class="svc-thumb" src="{{ s.image | img(900) }}" alt="{{ s.alt }}" loading="lazy">
       </li>
       {% endfor %}
     </ol>
@@ -185,7 +188,7 @@
   <div class="wrap cams-grid">
     <div class="cams-sticky">
       <div class="cams-frame">
-        {% for t in site.cameras.tiers %}<img src="{{ t.image | img }}" srcset="{{ t.image | srcset }}" sizes="(max-width: 900px) 100vw, 50vw" alt="" class="cams-img{% if loop.first %} is-active{% endif %}" data-i="{{ loop.index0 }}" loading="lazy">{% endfor %}
+        {% for t in site.cameras.tiers %}<img src="{{ t.image | img }}" srcset="{{ t.image | srcset }}" sizes="(max-width: 900px) 100vw, 50vw" alt="{{ t.alt }}" class="cams-img{% if loop.first %} is-active{% endif %}" data-i="{{ loop.index0 }}" loading="lazy">{% endfor %}
         <span class="rec mono"><i></i>REC · CAM 0<b id="camNo">1</b></span>
         <span class="corners" aria-hidden="true"></span>
       </div>
@@ -199,7 +202,7 @@
         <span class="mono tier-n">0{{ loop.index }} / 0{{ site.cameras.tiers|length }}</span>
         <h3>{{ t.title }}</h3>
         <p>{{ t.text }}</p>
-        <img class="tier-img" src="{{ t.image | img(900) }}" alt="" loading="lazy">
+        <img class="tier-img" src="{{ t.image | img(900) }}" alt="{{ t.alt }}" loading="lazy">
       </article>
       {% endfor %}
     </div>

@@ -7,6 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 
 ROOT = pathlib.Path(__file__).parent
 SRC, CONTENT, OUT = ROOT / 'src', ROOT / '_data', ROOT / 'site'
+URL = 'https://webhunter-navrhy.github.io/esystemy/'
 
 if OUT.exists():
     shutil.rmtree(OUT)
@@ -31,16 +32,46 @@ def img(p, w=None):
     if w:
         small = p.replace('.jpg', f'-{w}.jpg')
         if (OUT / small).exists():
-            return small
-    return p
+            p = small
+    return webp(p)
+
+
+def webp(p):
+    """stejná fotka ve WebP (menší přenos), pokud vedle JPG existuje"""
+    w = p[:-4] + '.webp' if p.endswith('.jpg') else p
+    return w if (OUT / w).exists() else p
 
 
 def srcset(p):
     p = img(p)
-    small = p.replace('.jpg', '-900.jpg')
+    small = p.replace('.webp', '-900.webp').replace('.jpg', '-900.jpg')
     if (OUT / small).exists():
         return f'{small} 900w, {p} 1600w'
     return p
+
+
+def jsonld(site):
+    """schema.org jen z údajů, které jsou na webu"""
+    street, _, city = site['address'].partition(', ')
+    m = re.match(r'(\d{3} ?\d{2})\s+(.+)', city)
+    psc, mesto = (m.group(1), m.group(2)) if m else ('', city)
+    d = {
+        '@context': 'https://schema.org',
+        '@type': 'HomeAndConstructionBusiness',
+        'name': site['name'],
+        'description': 'Chytrý dům Loxone, Fibaro a Control4, kamerové systémy, alarmy PZTS, přístupové a docházkové systémy a fotovoltaika. Projekt, realizace i servis.',
+        'url': URL,
+        'image': URL + 'assets/img/og.jpg',
+        'logo': URL + 'assets/apple-touch-icon.png',
+        'telephone': site['phone'].replace(' ', ''),
+        'email': site['email'],
+        'taxID': site['ico'],
+        'legalName': site['owner'],
+        'address': {'@type': 'PostalAddress', 'streetAddress': street,
+                    'postalCode': psc, 'addressLocality': mesto, 'addressCountry': 'CZ'},
+        'areaServed': 'České Budějovice',
+    }
+    return json.dumps(d, ensure_ascii=False, indent=1).replace('</', '<\\/')
 
 
 env = Environment(loader=FileSystemLoader(str(SRC)), autoescape=False)
@@ -61,6 +92,7 @@ html = env.get_template('index.html').render(
     data,
     v={'css': h('assets/style.css'), 'js': h('assets/main.js'), 'fav': h('assets/favicon.png'), 'logo': h('assets/mark-light.svg')},
     year=datetime.date.today().year,
+    jsonld=jsonld(data['site']),
 )
 (OUT / 'index.html').write_text(nbsp(html))
 (OUT / 'robots.txt').write_text('User-agent: *\nDisallow: /\n')

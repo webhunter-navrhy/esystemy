@@ -8,7 +8,8 @@
       "Fibaro",
       "Control4"
     ],
-    "image": "svetla.jpg"
+    "image": "svetla.jpg",
+    "alt": "Ovládání chytrého domu z tabletu u moderní vily s bazénem"
   },
   {
     "id": "kamery",
@@ -19,7 +20,8 @@
       "Videoanalýza",
       "SPZ"
     ],
-    "image": "kamera.jpg"
+    "image": "kamera.jpg",
+    "alt": "Venkovní bezpečnostní kamera na fasádě domu"
   },
   {
     "id": "alarmy",
@@ -29,7 +31,8 @@
       "PZTS",
       "Alarmy"
     ],
-    "image": "alarm.jpg"
+    "image": "alarm.jpg",
+    "alt": "Ovládací klávesnice zabezpečovacího systému na zdi"
   },
   {
     "id": "pristup",
@@ -39,7 +42,8 @@
       "ACS",
       "Docházka"
     ],
-    "image": "pristup.jpg"
+    "image": "pristup.jpg",
+    "alt": "Čtečka otisků prstů s klávesnicí u vstupu"
   },
   {
     "id": "fve",
@@ -50,6 +54,7 @@
       "Dotace",
       "Vzdálený dohled"
     ],
-    "image": "fve.jpg"
+    "image": "fve.jpg",
+    "alt": "Fotovoltaické panely na střeše rodinného domu"
   }
 ]

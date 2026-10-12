@@ -219,7 +219,7 @@ button.tile:hover { border-color: rgba(244,239,232,.2); transform: translateY(-2
 .gold { margin-top: 2.4rem; width: 265px; border-radius: 4px; box-shadow: 0 10px 30px -14px rgba(0,0,0,.4); }
 
 /* ---------- služby ---------- */
-.services { padding: var(--sec) 0; background: var(--paper-2); position: relative; }
+.services { padding: var(--sec) 0; background: var(--paper-2); position: relative; overflow-x: clip; }
 .svc-list { border-top: 1px solid var(--line); counter-reset: s; }
 .svc { position: relative; display: grid; grid-template-columns: 7rem minmax(0, 1fr) minmax(0, 18rem); gap: 2rem; align-items: center; padding: 2.3rem 0; border-bottom: 1px solid var(--line); transition: padding .6s var(--ease), background .6s var(--ease); cursor: default; }
 .svc::before { content: ''; position: absolute; inset: 0 -1.5rem; border-radius: 16px; background: var(--ink); opacity: 0; transform: scaleY(.6); transition: opacity .5s var(--ease), transform .6s var(--ease); z-index: 0; }

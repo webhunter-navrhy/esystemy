@@ -71,17 +71,20 @@
       {
         "title": "Rodinné domy",
         "text": "Kamerové systémy menšího rozsahu pro rodinné domy, stavby, chalupy a zahrádky. Navrhneme Vám řešení přímo na míru.",
-        "image": "kamera.jpg"
+        "image": "kamera.jpg",
+        "alt": "Venkovní bezpečnostní kamera u rodinného domu"
       },
       {
         "title": "Firmy a průmyslové objekty",
         "text": "Systémy s pokročilou inteligentní videoanalýzou pro efektivnější vyhledávání záznamu a lepší využití celého systému.",
-        "image": "kamera-obchod.jpg"
+        "image": "kamera-obchod.jpg",
+        "alt": "Kopulová kamera pod stropem prodejny"
       },
       {
         "title": "Automatizace a střežení",
         "text": "Kamery, které ovládají další technologie: automatické závory a brány se čtením SPZ nebo perimetrická ochrana plotu pomocí termokamer.",
-        "image": "dum-brana.jpg"
+        "image": "dum-brana.jpg",
+        "alt": "Moderní dům s automatickou bránou, kamerou a fotovoltaikou na střeše"
       }
     ]
   },
